@@ -5,7 +5,7 @@ import { GoogleGenAI } from "@google/genai";
 import Markdown from 'react-markdown';
 import { 
   Menu, User, ChevronDown, Plus, MoreHorizontal, ChevronUp, ChevronsUp, AlarmClock, FolderOpen, Quote, FileText, Layout, BarChart3, Briefcase, Mic2, X, Mic, Building2, Users, List, Image, Mail, MessageSquare, Check, Headset, Palette, Sparkles, Search, Cpu, UserCircle, Send, ThumbsUp, ThumbsDown, Copy, Share2, ArrowLeft, ArrowRight, Globe, ChevronsDown, Edit2, Pin, Trash2, ChevronLeft, ChevronRight,
-  Settings, CheckCircle2, PlusCircle, Banknote, Megaphone, Paperclip
+  Settings, CheckCircle2, PlusCircle, Banknote, Megaphone, Paperclip, Target, ClipboardList, Calendar, TrendingUp, Activity, Star, UserCheck, Clock, PieChart
 } from 'lucide-react';
 
 // --- Types ---
@@ -1096,18 +1096,18 @@ const SelectionPopup = ({ isOpen, onClose, onSelect, title, items, positionClass
           initial={{ opacity: 0, scale: 0.9, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 10 }}
-          className={`absolute bottom-full mb-4 w-[300px] bg-white rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-gray-100/50 overflow-hidden z-[110] p-5 pointer-events-auto ${positionClassName}`}
+          className={`absolute bottom-full mb-3 w-[260px] bg-white rounded-[20px] shadow-[0_15px_45px_rgba(0,0,0,0.12)] border border-gray-100/50 overflow-hidden z-[110] p-4 pointer-events-auto ${positionClassName}`}
         >
-          <div className="flex justify-between items-center mb-4 px-1">
-            <div className="flex items-center space-x-2.5">
-              <div className="w-1.5 h-5 bg-blue-500 rounded-full" />
-              <h3 className="text-[17px] font-bold text-gray-900 tracking-tight">{title}</h3>
+          <div className="flex justify-between items-center mb-3 px-0.5">
+            <div className="flex items-center space-x-2">
+              <div className="w-1 h-4 bg-blue-500 rounded-full" />
+              <h3 className="text-[15px] font-bold text-gray-900 tracking-tight">{title}</h3>
             </div>
-            <button onClick={onClose} className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors">
-              <X className="w-4.5 h-4.5" />
+            <button onClick={onClose} className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-50 rounded-full transition-colors">
+              <X className="w-4 h-4" />
             </button>
           </div>
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             {items.map((item, idx) => (
               <button
                 key={idx}
@@ -1115,18 +1115,18 @@ const SelectionPopup = ({ isOpen, onClose, onSelect, title, items, positionClass
                   onSelect(item.text);
                   onClose();
                 }}
-                className="w-full text-left text-[14px] text-gray-600 hover:text-blue-600 hover:bg-blue-50/50 transition-all py-3 px-3.5 rounded-2xl font-medium flex items-center group border border-transparent hover:border-blue-100/50"
+                className="w-full text-left text-[13px] text-gray-600 hover:text-blue-600 hover:bg-blue-50/50 transition-all py-2 px-2.5 rounded-xl font-medium flex items-center group border border-transparent hover:border-blue-100/30"
               >
-                <div className="w-8 h-8 rounded-xl bg-gray-50 group-hover:bg-blue-100/50 flex items-center justify-center mr-3 transition-colors shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-gray-50 group-hover:bg-blue-100/50 flex items-center justify-center mr-2.5 transition-colors shrink-0">
                   {item.icon || <div className="w-1.5 h-1.5 rounded-full bg-gray-300 group-hover:bg-blue-400" />}
                 </div>
-                <span className="flex-1 leading-tight">{item.text}</span>
-                <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-all -mr-1" />
+                <span className="flex-1 leading-tight line-clamp-1">{item.text}</span>
+                <ChevronRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-blue-400 opacity-0 group-hover:opacity-100 transition-all -mr-0.5" />
               </button>
             ))}
           </div>
           {/* Triangle pointer */}
-          <div className={`absolute -bottom-2 ${triangleLeft} w-4 h-4 bg-white border-b border-r border-gray-100/50 rotate-45 shadow-[4px_4px_10px_rgba(0,0,0,0.03)]`} />
+          <div className={`absolute -bottom-2 ${triangleLeft} w-4 h-4 bg-white border-b border-r border-gray-100/50 rotate-45 shadow-[4px_4px_10px_rgba(0,0,0,0.02)]`} />
         </motion.div>
       )}
     </AnimatePresence>
@@ -1236,12 +1236,11 @@ const InputOverlay = ({
                  <SelectionPopup 
                    title="任务执行"
                    items={[
-                     { text: "确认李毅燃资产配置方案", icon: <CheckCircle2 className="w-4 h-4 text-emerald-500" /> },
-                     { text: "生成华创稳赢3号营销话术", icon: <Sparkles className="w-4 h-4 text-blue-500" /> },
-                     { text: "开展24国开15机构路演", icon: <Users className="w-4 h-4 text-indigo-500" /> },
-                     { text: "审核芯源微电子尽调大纲", icon: <FileText className="w-4 h-4 text-orange-500" /> },
-                     { text: "如何提升客户转化率？", icon: <BarChart3 className="w-4 h-4 text-rose-500" /> },
-                     { text: "本周重点关注哪些项目？", icon: <Search className="w-4 h-4 text-slate-500" /> }
+                     { text: "今天有哪些我的任务重点", icon: <Target className="w-4 h-4 text-emerald-500" /> },
+                     { text: "输出路演准备清单", icon: <ClipboardList className="w-4 h-4 text-blue-500" /> },
+                     { text: "帮我梳理今日客户触达重点", icon: <Users className="w-4 h-4 text-indigo-500" /> },
+                     { text: "安排一场产品路演", icon: <Calendar className="w-4 h-4 text-orange-500" /> },
+                     { text: "输出一份前端发起方案", icon: <Send className="w-4 h-4 text-rose-500" /> }
                    ]}
                    isOpen={isTaskPopupOpen} 
                    onClose={() => setIsTaskPopupOpen(false)} 
@@ -1259,12 +1258,13 @@ const InputOverlay = ({
                  <SelectionPopup 
                    title="我的业务"
                    items={[
-                     { text: "财富管理：高净值客户资金激活", icon: <Banknote className="w-4 h-4 text-emerald-500" /> },
-                     { text: "财富管理：重点产品代销推广", icon: <Megaphone className="w-4 h-4 text-blue-500" /> },
-                     { text: "销售交易：一级债分销业务", icon: <BarChart3 className="w-4 h-4 text-indigo-500" /> },
-                     { text: "投资银行：并购重组尽职调查", icon: <Building2 className="w-4 h-4 text-orange-500" /> },
-                     { text: "如何拓展机构经纪业务？", icon: <Users className="w-4 h-4 text-rose-500" /> },
-                     { text: "当前市场有哪些投资机会？", icon: <Globe className="w-4 h-4 text-slate-500" /> }
+                     { text: "机构客户适合什么资管方案", icon: <Briefcase className="w-4 h-4 text-emerald-500" /> },
+                     { text: "先帮我梳理机构客户服务流程", icon: <Activity className="w-4 h-4 text-blue-500" /> },
+                     { text: "给我一个定制化方案框架", icon: <Layout className="w-4 h-4 text-indigo-500" /> },
+                     { text: "给我看最新净值波动", icon: <TrendingUp className="w-4 h-4 text-orange-500" /> },
+                     { text: "推荐适合续投的产品", icon: <Star className="w-4 h-4 text-rose-500" /> },
+                     { text: "高优先客户有哪些", icon: <UserCheck className="w-4 h-4 text-emerald-600" /> },
+                     { text: "需要升级的客户", icon: <ArrowRight className="w-4 h-4 text-blue-600" /> }
                    ]}
                    isOpen={isBusinessPopupOpen} 
                    onClose={() => setIsBusinessPopupOpen(false)} 
@@ -1282,10 +1282,9 @@ const InputOverlay = ({
                  <SelectionPopup 
                    title="工作总结"
                    items={[
-                     { text: "查看今日销售工作日报", icon: <FileText className="w-4 h-4 text-blue-500" /> },
-                     { text: "查看本周客户拜访总结", icon: <Users className="w-4 h-4 text-emerald-500" /> },
-                     { text: "查看本月业绩达成进度与缺口", icon: <BarChart3 className="w-4 h-4 text-orange-500" /> },
-                     { text: "查看上周工作周报", icon: <Layout className="w-4 h-4 text-indigo-500" /> }
+                     { text: "当前主线项目进展", icon: <Activity className="w-4 h-4 text-blue-500" /> },
+                     { text: "查看我的项目进度", icon: <PieChart className="w-4 h-4 text-emerald-500" /> },
+                     { text: "本周客户触达计划", icon: <Calendar className="w-4 h-4 text-orange-500" /> }
                    ]}
                    isOpen={isSummaryPopupOpen} 
                    onClose={() => setIsSummaryPopupOpen(false)} 
@@ -2650,12 +2649,11 @@ export default function App() {
                 <SelectionPopup 
                   title="任务执行"
                   items={[
-                    { text: "确认李毅燃资产配置方案", icon: <CheckCircle2 className="w-4 h-4 text-emerald-500" /> },
-                    { text: "生成华创稳赢3号营销话术", icon: <Sparkles className="w-4 h-4 text-blue-500" /> },
-                    { text: "开展24国开15机构路演", icon: <Users className="w-4 h-4 text-indigo-500" /> },
-                    { text: "审核芯源微电子尽调大纲", icon: <FileText className="w-4 h-4 text-orange-500" /> },
-                    { text: "如何提升客户转化率？", icon: <BarChart3 className="w-4 h-4 text-rose-500" /> },
-                    { text: "本周重点关注哪些项目？", icon: <Search className="w-4 h-4 text-slate-500" /> }
+                    { text: "今天有哪些我的任务重点", icon: <Target className="w-4 h-4 text-emerald-500" /> },
+                    { text: "输出路演准备清单", icon: <ClipboardList className="w-4 h-4 text-blue-500" /> },
+                    { text: "帮我梳理今日客户触达重点", icon: <Users className="w-4 h-4 text-indigo-500" /> },
+                    { text: "安排一场产品路演", icon: <Calendar className="w-4 h-4 text-orange-500" /> },
+                    { text: "输出一份前端发起方案", icon: <Send className="w-4 h-4 text-rose-500" /> }
                   ]}
                   isOpen={isTaskPopupOpen} 
                   onClose={() => setIsTaskPopupOpen(false)} 
@@ -2683,12 +2681,13 @@ export default function App() {
                 <SelectionPopup 
                   title="我的业务"
                   items={[
-                    { text: "财富管理：高净值客户资金激活", icon: <Banknote className="w-4 h-4 text-emerald-500" /> },
-                    { text: "财富管理：重点产品代销推广", icon: <Megaphone className="w-4 h-4 text-blue-500" /> },
-                    { text: "销售交易：一级债分销业务", icon: <BarChart3 className="w-4 h-4 text-indigo-500" /> },
-                    { text: "投资银行：并购重组尽职调查", icon: <Building2 className="w-4 h-4 text-orange-500" /> },
-                    { text: "如何拓展机构经纪业务？", icon: <Users className="w-4 h-4 text-rose-500" /> },
-                    { text: "当前市场有哪些投资机会？", icon: <Globe className="w-4 h-4 text-slate-500" /> }
+                    { text: "机构客户适合什么资管方案", icon: <Briefcase className="w-4 h-4 text-emerald-500" /> },
+                    { text: "先帮我梳理机构客户服务流程", icon: <Activity className="w-4 h-4 text-blue-500" /> },
+                    { text: "给我一个定制化方案框架", icon: <Layout className="w-4 h-4 text-indigo-500" /> },
+                    { text: "给我看最新净值波动", icon: <TrendingUp className="w-4 h-4 text-orange-500" /> },
+                    { text: "推荐适合续投的产品", icon: <Star className="w-4 h-4 text-rose-500" /> },
+                    { text: "高优先客户有哪些", icon: <UserCheck className="w-4 h-4 text-emerald-600" /> },
+                    { text: "需要升级的客户", icon: <ArrowRight className="w-4 h-4 text-blue-600" /> }
                   ]}
                   isOpen={isBusinessPopupOpen} 
                   onClose={() => setIsBusinessPopupOpen(false)} 
@@ -2716,10 +2715,9 @@ export default function App() {
                 <SelectionPopup 
                   title="工作总结"
                   items={[
-                    { text: "查看今日销售工作日报", icon: <FileText className="w-4 h-4 text-blue-500" /> },
-                    { text: "查看本周客户拜访总结", icon: <Users className="w-4 h-4 text-emerald-500" /> },
-                    { text: "查看本月业绩达成进度与缺口", icon: <BarChart3 className="w-4 h-4 text-orange-500" /> },
-                    { text: "查看上周工作周报", icon: <Layout className="w-4 h-4 text-indigo-500" /> }
+                    { text: "当前主线项目进展", icon: <Activity className="w-4 h-4 text-blue-500" /> },
+                    { text: "查看我的项目进度", icon: <PieChart className="w-4 h-4 text-emerald-500" /> },
+                    { text: "本周客户触达计划", icon: <Calendar className="w-4 h-4 text-orange-500" /> }
                   ]}
                   isOpen={isSummaryPopupOpen} 
                   onClose={() => setIsSummaryPopupOpen(false)} 
