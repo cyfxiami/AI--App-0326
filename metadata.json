@@ -1,0 +1,7 @@
+{
+  "name": "Remix: AI工作台-App端-03251号",
+  "description": "AI工作台",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
